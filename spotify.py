@@ -1,10 +1,17 @@
+import requests
+
 
 class Spotify:
-    def __init__:
+    def __init__(self):
         pass
 
-    def retrieve():
+    def authorization(self):
+        url = "https://accounts.spotify.com/authorize"
+        r = requests.get(url)
+        print(r.status_code)
+
+    def retrieve(self):
         pass
 
-    def create();
+    def create(self):
         pass
