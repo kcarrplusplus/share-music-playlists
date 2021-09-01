@@ -23,3 +23,7 @@
 ## Other potential resources
 - Amazon music
 - Soundcloud
+
+
+Research:
+[Exploring the Spotify API with Python](https://stmorse.github.io/journal/spotify-api.html)

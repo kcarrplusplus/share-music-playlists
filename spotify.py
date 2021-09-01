@@ -1,14 +1,43 @@
 import requests
-
+import json
 
 class Spotify:
-    def __init__(self):
-        pass
+    def __init__(self, client_id, client_secret):
+        self.access_token = ""
+        self.base_url = "https://api.spotify.com/v1"
+        self.client_id = client_id
+        self.client_secret = client_secret 
 
     def authorization(self):
-        url = "https://accounts.spotify.com/authorize"
-        r = requests.get(url)
-        print(r.status_code)
+        url = "https://accounts.spotify.com/api/token"
+
+        auth_response = requests.post(url, {
+            'grant_type': 'client_credentials',
+            'client_id': self.client_id,
+            'client_secret': self.client_secret,
+        })
+        response_data = auth_response.json()
+
+        self.access_token = response_data["access_token"]
+
+    def get_current_users_playlists(self, user_id):
+        url = self.base_url + '/users/%s/playlists' % user_id
+        headers = {
+            'Authorization': 'Bearer %s' % self.access_token
+        }
+
+        r = requests.get(url, headers=headers)
+        print(r.json())
+
+    def get_current_users_info(self, user_id):
+        url = self.base_url + '/%s' % user_id
+        headers = {
+            'Authorization': 'Bearer %s' % self.access_token
+        }
+
+        r = requests.get(url, headers=headers)
+        print(r.json())
+
 
     def retrieve(self):
         pass
