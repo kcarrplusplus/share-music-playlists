@@ -13,7 +13,7 @@ spotify = Spotify(
     client_secret = os.getenv("SPOTIFY_CLIENT_SECRET") 
 )
 
-spotify_current_user = os.getenv("SPOTIFY_CURRENT_USER")
+spotify_current_user = os.getenv("SPOTIFY_USER_ID")
 
 spotify.authorization()
 spotify.get_current_users_playlists(spotify_current_user)

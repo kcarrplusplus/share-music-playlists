@@ -29,7 +29,7 @@ class Spotify:
         print(r.json())
 
     def get_current_users_info(self, user_id):
-        url = self.base_url + '/%s' % user_id
+        url = self.base_url + '/users/%s' % user_id
         
         r = requests.get(url, headers=self.headers)
         print(r.json())
