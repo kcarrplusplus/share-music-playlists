@@ -35,8 +35,26 @@ class Spotify:
         print(r.json())
 
 
-    def retrieve(self):
+    def get_playlist(self):
+        # POST https://api.spotify.com/v1/users/{user_id}/playlists
         pass
 
-    def create(self):
-        pass
+    def create_playlist(self, user_id, name_of_playlist, description='', public=True, collaborative=False):
+        # TODO: Have to use authorization code flow or implicit grant flow detailed in link below
+        # https://developer.spotify.com/documentation/general/guides/authorization-guide/
+        url = self.base_url + '/users/%s/playlists' % user_id
+        post_headers = self.headers
+        post_headers['Content-Type'] = 'application/json'
+        post_headers['Accept'] = 'application/json'
+
+        payload = {
+            'name': name_of_playlist, 
+            'public': public,
+            'collaborative': collaborative,
+            'description': description
+        }
+        print(post_headers)
+        r = requests.post(url, headers=post_headers, data=payload)
+
+        print(r.text)
+        print(r.status_code)

@@ -19,3 +19,5 @@ spotify.authorization()
 spotify.get_current_users_playlists(spotify_current_user)
 spotify.get_current_users_info(spotify_current_user)
 
+spotify.create_playlist(spotify_current_user, 'Italian coastline under the moonlight', 'a playlist for the riveria')
+
